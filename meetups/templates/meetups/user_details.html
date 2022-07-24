@@ -1,0 +1,67 @@
+{% extends 'meetups/main.html' %}
+{% block title %} Login{% endblock title%}
+{% block slider %} {% endblock%}
+{%block page_title%}
+</br>
+<h2 >User details</h2>
+{%endblock%}
+{% block content%}
+<section id="contact" class="contact-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-4">
+          <div class="contact-item-wrapper">
+            <div class="row">
+              <div class="col-12 col-md-6 col-xl-12">
+                <div class="contact-item">
+                  <div class="contact-icon">
+                    <i class="lni lni-phone"></i>
+                  </div>
+                  <div class="contact-content">
+                    <h4>Contact</h4>
+                    <p>{{user.mobile_number}}</p>
+                    <p>{{user.email}}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-6 col-xl-12">
+                <div class="contact-item">
+                  <div class="contact-icon">
+                    <i class="lni lni-map-marker"></i>
+                  </div>
+                  <div class="contact-content">
+                    <h4>Bio</h4>
+                    <p>{{user.bio}}</p>
+                    
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-8">
+          <div class="contact-form-wrapper">
+            <div class="row">
+              <div class="col-xl-10 col-lg-8 mx-auto">
+                <div class="section-title text-center">
+                 
+                  <h2>
+                    {{user.name}}
+                  </h2>
+                  <p>
+                   {{user.email}}
+                  </p>
+                </div>
+              </div>
+            </div>
+            <img src="{{user.image.url}}" alt="user image"/> 
+         
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  {% block clt %}{% endblock %}
+
+{%endblock%}

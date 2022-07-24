@@ -1,0 +1,47 @@
+{% extends 'meetups/main.html' %}
+
+{% block title %} Meetups{% endblock title%}
+
+{% block slider %} {% endblock%}
+{%block page_title%}
+</br>
+<h2 >Meetups Participants</h2>
+{% endblock%}
+{% block content%}
+<section id="contact" class="contact-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-6">
+          <div class="contact-item-wrapper">
+<table class="table table-striped">
+    <thead  class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Email</th>
+        <th scope="col">Contact</th>
+       
+      </tr>
+    </thead>
+    <tbody>
+        {% for partipant in participants%}
+      <tr>
+        <th scope="row">{{partipant.id}}</th>
+        <td>{{partipant.email}}</td>
+        <td><a href="mailto:{{partipant.email}}">Send Email</a></td>
+      </tr>
+        {%empty%}
+        <p>No participants yet</p>
+        {%endfor%}
+      </tr>
+    </tbody>
+</table>
+
+<span>{{ count}} Participants</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+{%endblock%}
+{%block clt%}{%endblock clt%}

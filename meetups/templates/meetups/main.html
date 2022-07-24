@@ -1,0 +1,408 @@
+{% load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!--====== Required meta tags ======-->
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="description" content="" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <!--====== Title ======-->
+  <title>{% block title %}Business | Bootstrap 5 Business Template{% endblock%}</title>
+ 
+  <!--====== Favicon Icon ======-->
+  <link rel="shortcut icon" href="{% static  'meetups/assets/images/favicon.svg' %}" type="image/svg" />
+ 
+  <!--====== Bootstrap css ======-->
+  <link rel="stylesheet" href="{% static 'meetups/assets/css/bootstrap.min.css' %}" />
+  
+  <!--====== Line Icons css ======-->
+  <link rel="stylesheet" href="{% static 'meetups/assets/css/lineicons.css' %}" />
+
+  <!--====== Tiny Slider css ======-->
+  <link rel="stylesheet" href="{% static 'meetups/assets/css/tiny-slider.css' %}" />
+  
+  <!--====== gLightBox css ======-->
+  <link rel="stylesheet" href="{% static 'meetups/assets/css/glightbox.min.css' %}" />
+
+  <link rel="stylesheet" href="{% static 'meetups/style.css' %}" />
+</head>
+
+<body>
+
+  <!--====== NAVBAR NINE PART START ======-->
+
+  <section class="navbar-area navbar-nine">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <nav class="navbar navbar-expand-lg">
+            <a class="navbar-brand" href="{%url 'meetups'%}">
+              <a class="navbar-brand" href="{%url 'meetups'%}">
+                <h4 class="btn primary-btn rounded-full" >K-MEETUPS</h4>
+              </a>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNine"
+              aria-controls="navbarNine" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="toggler-icon"></span>
+              <span class="toggler-icon"></span>
+              <span class="toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse sub-menu-bar" id="navbarNine">
+              <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                  <a class="active" href="{% url 'meetups'%}">Home</a>
+                </li>
+                
+                <li class="nav-item">
+                  <a  href="{% url 'contact'%}">Contact</a>
+                </li>
+                {% if request.user.is_authenticated%}
+                <li class="nav-item">
+                  <a href="{% url 'user-profile' request.user.id%}">Profile</a>
+                </li>
+                <li class="nav-item">
+                  <a class="" href="{% url 'user-meetups' request.user.id%}">My Meetups</a>
+                </li>
+                <li class="nav-item">
+                 
+                 <a class="" href="{% url 'user-speakers' request.user.id%}">My Speakers</a>
+                 
+                </li>
+                <li class="nav-item">
+                  <a class="" href="{% url 'create-meetups'%}">Add Meetups</a>
+                </li>
+                <li class="nav-item">
+                  <a class="" href="{% url 'logout'%}">Logout</a>
+                </li>
+                
+                
+                {% else%}
+                <li class="nav-item">
+                  <a class="" href="{% url 'login'%}">Add Meetup</a>
+                </li>
+                <li class="nav-item">
+                  <a class="" href="{% url 'login'%}">Login</a>
+                </li>
+                <li class="nav-item">
+                  <a class="" href="{% url 'register'%}">Register</a>
+                </li>
+                {% endif%}
+              </ul>
+            </div>
+
+            <div class="navbar-btn d-none d-lg-inline-block">
+              <a class="menu-bar" href="#side-menu-left"><i class="lni lni-menu"></i></a>
+            </div>
+          </nav>
+          <!-- navbar -->
+        </div>
+      </div>
+      <!-- row -->
+    </div>
+    <!-- container -->
+  </section>
+
+  <!--====== NAVBAR NINE PART ENDS ======-->
+
+  <!--====== SIDEBAR PART START ======-->
+  
+  <div class="sidebar-left">
+    <div class="sidebar-close">
+      <a class="close" href="#close"><i class="lni lni-close"></i></a>
+    </div>
+    <div class="sidebar-content">
+      {% if request.user.is_authenticated%}
+      <div class="">
+        <a href="{%  url 'user-details' request.user.id %}"><img class="avatar avatar--large active" src="{{request.user.image.url}}" alt="Logo" /></a>
+      </div>
+      <h3 class="text">Welcome! {{request.user.username}} </h3>
+
+      <div class="sidebar-menu">
+        
+        <ul>
+          <li><a href="{% url 'user-profile' request.user.id%}">Profile</a></li>
+          <li><a class="" href="{% url 'user-meetups' request.user.id%}">My Meetups</a></li>
+          <li><a class="" href="{% url 'user-speakers' request.user.id%}">My Speakers</a></li>
+          <li><a class="" href="{% url 'logout'%}">Logout</a></li>
+          
+          
+        </ul>
+      </div>
+      <!-- logo -->
+      {%endif%}
+      <div class="sidebar-menu">
+        <h5 class="menu-title">Quick Links</h5>
+        <ul>
+          <li><a href="{% url 'register'%}">Register</a></li>
+          <li><a href="{% url 'contact'%}">Contact Us</a></li>
+          <li><a href="{% url 'login'%}">Login</a></li>
+          <li><a href="{% url 'create-meetups'%}">Add Meetups</a></li>
+          <li><a href="{% url 'upcoming-meetups'%}">Upcoming Meetups</a></li>
+        </ul>
+      </div>
+      <!-- menu -->
+      <div class="sidebar-social align-items-center justify-content-center">
+        <h5 class="social-title">Follow Us On</h5>
+        <ul>
+          <li>
+            <a href="https://web.facebook.com/olaoye.kunle.7"><i class="lni lni-facebook-filled"></i></a>
+          </li>
+          <li>
+            <a href="https://twitter.com/KunleFestus"><i class="lni lni-twitter-original"></i></a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/in/kunle-kunle-91903290"><i class="lni lni-linkedin-original"></i></a>
+          </li>
+          <li>
+            <a href="javascript:void(0)"><i class="lni lni-youtube"></i></a>
+          </li>
+        </ul>
+      </div>
+      <!-- sidebar social -->
+    </div>
+    <!-- content -->
+  </div>
+  <div class="overlay-left"></div>
+
+  <!--====== SIDEBAR PART ENDS ======-->
+{% block slider%}
+  <!-- Start header Area -->
+  <section id="hero-area" class="header-area header-eight">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 col-md-12 col-12">
+          <div class="header-content">
+            <h1>Corporate & Business Site Template by Ayro UI.</h1>
+            <p>
+              We are a digital agency that helps brands to achieve their
+              business outcomes. We see technology as a tool to create amazing
+              things.
+            </p>
+            <div class="button">
+              <a href="{%url 'register'%}" class="btn primary-btn">Get Started</a>
+             
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-12 col-12">
+          <div class="header-image">
+            <img src="{% static 'meetups/assets/images/header/hero-image.jpg' %}" alt="#" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock%}
+  <!-- End header Area -->
+<!-- Start Latest News Area -->
+
+<div id="blog" class="latest-news-area section">
+  <!--======  Start Section Title Five ======-->
+  <div class="section-title-five">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          
+            {%block page_title%} 
+            <h2 class="fw-bold">All Meetups </h2>
+            
+            {%endblock%}
+        
+        </div>
+      </div>
+      <!-- row -->
+    </div>
+    <!-- container -->
+  </div>
+  <!--======  End Section Title Five ======-->
+{% block content %}
+
+{%endblock%}
+
+<!-- End Latest News Area -->
+  
+  <!-- ===== service-area start ===== -->
+
+ 
+
+
+{% block clt%}
+  <!-- Start Cta Area -->
+  <section id="call-action" class="call-action">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-xxl-6 col-xl-7 col-lg-8 col-md-9">
+          <div class="inner-content">
+            <h2>K-meets is meetup app perfectly design for all events<br />Register to create and manage your meetup events</h2>
+            <p>Create, manage your speakers and participants with ease
+              <br />
+             Send emails to participant/subscriber to follow them up.
+             sign up for a journey to a successful meetup events 
+            </p>
+            <div class="light-rounded-buttons">
+              <a href="{%url 'register'%}" class="btn primary-btn-outline">Get Started</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Cta Area -->
+
+
+{%endblock%}
+  
+
+  
+    
+
+ 
+  <!-- Start Footer Area -->
+  <footer class="footer-area footer-eleven">
+    <!-- Start Footer Top -->
+    <div class="footer-top">
+      <div class="container">
+        <div class="inner-content">
+          <div class="row">
+            <div class="col-lg-4 col-md-6 col-12">
+              <!-- Single Widget -->
+              <div class="footer-widget f-about">
+                
+                <p>
+                  Create and manage your meetup events with K-meetups
+                </p>
+                <p class="copyright-text">
+                  <span>© 2022 Designed and Developed by Olaoye Kunle</span>
+                  <a href="https://maocular.org" rel="nofollow"> Visit my site </a>
+                </p>
+              </div>
+              <!-- End Single Widget -->
+            </div>
+            <div class="col-lg-2 col-md-6 col-12">
+              <!-- Single Widget -->
+              <div class="footer-widget f-link">
+                <h5>Quik Links</h5>
+                <ul>
+                  <li><a href="{% url 'meetups' %}">Home</a></li>
+                  <li><a href="{% url 'contact' %}">Contact</a></li>
+                  <li><a href="{% url 'upcoming-meetups' %}">Upcoming Meetups</a></li>
+                  <li><a href="{% url 'login' %}">Add meetup</a></li>
+                 
+                </ul>
+              </div>
+              <!-- End Single Widget -->
+            </div>
+            <div class="col-lg-2 col-md-6 col-12">
+              <!-- Single Widget -->
+              <div class="footer-widget f-link">
+                <h5>Pages</h5>
+                <ul>
+
+                  {% if request.user.is_authenticated%}
+                  <li><a href="{% url 'user-profile' request.user.id%}">Profile</a></li>
+                  <li><a href="{% url 'create-meetups' %}">Add Meetups</a></li>
+                  <li><a href="{% url 'user-speakers' request.user.id%}">Add Speakers</a></li>
+                  <li><a href="{% url 'user-meetups' request.user.id%}">My Meetups</a></li>
+                  <li><a href="{% url 'logout'%}">Logout</a></li>
+                  {%else%}
+                  <li><a href="{% url 'login'%}">Login</a></li>
+                  <li><a href="{% url 'register'%}">Register</a></li>
+                
+                  {% endif%}
+                </ul>
+              </div>
+              <!-- End Single Widget -->
+            </div>
+            <div class="col-lg-4 col-md-6 col-12">
+              <!-- Single Widget -->
+              <div class="footer-widget newsletter">
+                <h5>Subscribe</h5>
+                <p>Subscribe to our newsletter for the latest updates</p>
+                <form action="#" method="get" target="_blank" class="newsletter-form">
+                  <input name="EMAIL" placeholder="Email address" required="required" type="email" />
+                  <div class="button">
+                    <button class="sub-btn">
+                      <i class="lni lni-envelope"></i>
+                    </button>
+                  </div>
+                </form>
+              </div>
+              <!-- End Single Widget -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--/ End Footer Top -->
+  </footer>
+  <!--/ End Footer Area -->
+
+	<div class="made-in-ayroui mt-4">
+		<a href="https://maocular.org" target="_blank" rel="nofollow">
+      <a class="navbar-brand" href="{%url 'meetups'%}">
+        <h4 class="btn primary-btn rounded-full" >K-MEETUPS</h4>
+      </a>
+		</a>
+	</div>
+
+  <a href="#" class="scroll-top btn-hover">
+    <i class="lni lni-chevron-up"></i>
+  </a>
+
+  <!--====== js ======-->
+  
+  <script src="{% static 'meetups/assets/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'meetups/assets/js/glightbox.min.js' %}"></script>
+  <script src="{% static 'meetups/assets/js/main.js' %}"></script>
+  <script src="{% static 'meetups/assets/js/tiny-slider.js' %}"></script>
+
+  <script>
+
+    //===== close navbar-collapse when a  clicked
+    let navbarTogglerNine = document.querySelector(
+      ".navbar-nine .navbar-toggler"
+    );
+    navbarTogglerNine.addEventListener("click", function () {
+      navbarTogglerNine.classList.toggle("active");
+    });
+
+    // ==== left sidebar toggle
+    let sidebarLeft = document.querySelector(".sidebar-left");
+    let overlayLeft = document.querySelector(".overlay-left");
+    let sidebarClose = document.querySelector(".sidebar-close .close");
+
+    overlayLeft.addEventListener("click", function () {
+      sidebarLeft.classList.toggle("open");
+      overlayLeft.classList.toggle("open");
+    });
+    sidebarClose.addEventListener("click", function () {
+      sidebarLeft.classList.remove("open");
+      overlayLeft.classList.remove("open");
+    });
+
+    // ===== navbar nine sideMenu
+    let sideMenuLeftNine = document.querySelector(".navbar-nine .menu-bar");
+
+    sideMenuLeftNine.addEventListener("click", function () {
+      sidebarLeft.classList.add("open");
+      overlayLeft.classList.add("open");
+    });
+
+    //========= glightbox
+    GLightbox({
+      'href': 'https://www.youtube.com/watch?v=r44RKWyfcFw&fbclid=IwAR21beSJORalzmzokxDRcGfkZA1AtRTE__l5N4r09HcGS5Y6vOluyouM9EM',
+      'type': 'video',
+      'source': 'youtube', //vimeo, youtube or local
+      'width': 900,
+      'autoplayVideos': true,
+    });
+
+  </script>
+</body>
+
+</html>

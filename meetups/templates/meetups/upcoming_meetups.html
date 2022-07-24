@@ -1,0 +1,105 @@
+{% extends 'meetups/main.html' %}
+
+{% block title %} Upcoming Meetups{% endblock title%}
+
+{% block slider %} {% endblock%}
+{%block page_title%}
+</br>
+            <h2 class="fw-bold">Upcoming Meetups </h2>
+            <form action="" class="contact-form" method="GET" id="contact">
+              {%csrf_token%}
+              <div class="col-xl-12">
+                <div class="contact-form-wrapper"> 
+            <div class="row">
+              <div class="col-md-12">
+                <input type="text" name="q" placeholder="search" required />
+              </div>
+              
+            </div>
+            <hr>
+              <div class="col-12">
+                
+                <div class="col-12">
+                <div class="button text-center rounded-buttons">
+                  <button type="submit" class="btn primary-btn rounded-full">
+                   Search
+                  </button>
+                  <a class="btn primary-btn rounded-full" href="{% url 'meetups'%}" >All</a>
+                  <a class="btn primary-btn rounded-full" href="{% url 'meetups'%}" >Upcomimg</a>
+                </div>
+             
+              </div>
+            </div>
+          </form>
+          <br>
+        
+          
+        </div>
+      </div>
+        {% endblock%}
+{% block content%}
+
+
+  <div class="container" > 
+     <div class="row">
+         
+        {% for meetup in meetups %}
+        {%if meetup.from_date > todayDate%}
+        <div class="col-md-4">
+          <div class="image">
+           <div class="card">
+            <div class="single-news">
+              
+              <img src="{{ meetup.image.url }}" class="card-img-top thumb" >
+              
+            </div>
+              <div class="card-body">
+                <div class="card-title">
+                  <div class="content-body">
+                    <h4 class="title">
+                  {{ meetup.title }}
+               
+                 
+                    </h4>
+                  </div>
+                </div>
+                <div class="card-sub-title">
+                <span >Date:  {{ meetup.from_date }} - {{ meetup.to_date }}</span>
+                <p >Remaining:  {{ meetup.from_date|timeuntil }}</p></div>
+                <div class="card-text">
+                  Location: {{ meetup.location_name }}
+                 
+                </div>
+                <br>
+                {%if meetup.to_date < todayDate %}
+         <a  class="btn btn-warning rounded-full"  target="_new" href="">Past Event</a>
+                {% else%}
+                <a  class="btn primary-btn rounded-full"  target="_new" href="{%  url 'meetup-details' meetup.slug %}">Learn More</a>
+                {%endif%}
+                <span><a    target="_new" href="{%  url 'user-details' meetup.user.id %}">By: {{ meetup.user.username }}</a></span>
+              </div>
+
+           </div>
+          </div>
+        </div>
+     {%endif%}
+     {%empty%}
+     <p>No data found</p>
+    {%endfor%}
+      
+       </div>
+    </div>
+
+      
+     </div>
+  
+
+
+  </div>
+</br>
+
+   {% endblock %}
+   
+
+
+    

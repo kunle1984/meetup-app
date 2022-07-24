@@ -1,0 +1,53 @@
+{% extends 'meetups/main.html' %}
+{% block title %} Login{% endblock title%}
+{% block slider %} {% endblock%}
+{%block page_title%}
+</br>
+<h2 >Login </h2>
+{%endblock%}
+{% block content%}
+<section id="contact" class="contact-section">
+    <div class="container">
+      <div class="row">
+        
+        
+        <div class="col-xl-12">
+          <div class="contact-form-wrapper">
+            <div class="row">
+              <div class="col-xl-10 col-lg-8 mx-auto">
+                
+              </div>
+            </div>
+            <form action="" class="contact-form" method="POST">
+                {%csrf_token%}
+              <div class="row">
+                <div class="col-md-12">
+                  <input type="email" name="email" id="email" placeholder="Your Email" required />
+                </div>
+                
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                    <input type="password" name="password" id="password" placeholder="Your Password" required />
+                  </div>
+                </div>
+              <div class="row">
+                <div class="col-12">
+                  <div class="button text-center rounded-buttons">
+                    <button type="submit" class="btn primary-btn rounded-full">
+                     Login
+                    </button>
+                  </div>
+                  <p> Do no have an account? <a href="{% url 'register'%}"> Register</a></p>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</br>
+{% block clt%}{% endblock%}
+{% endblock content%}
+

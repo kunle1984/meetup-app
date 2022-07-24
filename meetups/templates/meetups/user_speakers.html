@@ -1,0 +1,95 @@
+{% extends 'meetups/main.html' %}
+
+{% block title %} my speakers{% endblock title%}
+
+{% block slider %} {% endblock%}
+{%block page_title%}
+</br>
+            <h2 class="fw-bold">My Speakers </h2>
+            <form action="" class="contact-form" method="GET" id="contact">
+              {%csrf_token%}
+              <div class="col-xl-12">
+                <div class="contact-form-wrapper"> 
+            <div class="row">
+              <div class="col-md-12">
+                <input type="text" name="q" placeholder="search" required />
+              </div>
+              
+            </div>
+            <hr>
+              <div class="col-12">
+                
+                <div class="col-12">
+                <div class="button text-center rounded-buttons">
+                  <button type="submit" class="btn primary-btn rounded-full">
+                   Search
+                  </button>
+                  <a class="btn primary-btn rounded-full" href="{% url 'user-speakers' request.user.id%}" >All</a>
+                </div>
+             
+              </div>
+            </div>
+          </form>
+          <br>
+          <h3>{{count}} {%if count > 1 %}Speakers{% else%}Speaker{%endif%}</h3>
+        </div>
+      </div>
+        {% endblock%}
+{% block content%}
+
+
+  <div class="container"> 
+     <div class="row">
+         
+        {% for speaker in speakers %}
+        <div class="col-md-4">
+          <div class="image">
+           <div class="card">
+            <div class="single-news">
+              
+              <img src="{{ speaker.image.url }}" class="card-img-top thumb" >
+              
+            </div>
+              <div class="card-body">
+                <div class="card-title">
+                  <div class="content-body">
+                    <h4 class="title">
+                  {{ speaker.name |title}}
+                
+                    </h4>
+                  </div>
+                </div>
+              
+              
+                <a class="btn primary-btn rounded-full" target="_new" href="{% url 'speaker-update' speaker.id %}">Edit</a>
+                <a class="btn primary-btn rounded-full" target="_new" href="{% url 'speaker-delete' speaker.id %}">Delete</a>
+                
+                <hr>
+                <div class="card-text">
+                <h3>Meetup Name</h3>
+                  <span >  {{ speaker.meetup_name}}</span>
+                </div>
+              </div>
+
+           </div>
+          </div>
+        </div>
+     
+    {%endfor%}
+      
+       </div>
+    </div>
+
+      
+     </div>
+  
+
+
+  </div>
+</br>
+
+   {% endblock %}
+   
+
+
+    

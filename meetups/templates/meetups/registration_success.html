@@ -1,0 +1,33 @@
+{% extends 'meetups/main.html' %}
+{% block title %} Success{% endblock title%}
+{% block slider %} {% endblock%}
+{%  block page_title%}<h2>You Registered Succefully</h2>{%endblock%}
+{% block content%}
+
+ <!-- Start Cta Area -->
+ <section id="call-action" class="call-action">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-xxl-6 col-xl-7 col-lg-8 col-md-9">
+          <div class="inner-content">
+            
+            <p>
+                Thanks You For Registering! <strong >Meet You At The Meetup </strong><br />
+                <p>Got questions or can't make it? Please  </p><h6><a href="#">contact our organizer</a></h6>
+                <h2>Ofcoures You can explore other meetups</h2>
+             
+            </p>
+            <div class="light-rounded-buttons">
+              <a href="{%url 'meetups'%}" class="btn primary-btn-outline">Explore Our Meetups</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Cta Area -->
+
+
+
+ {% endblock%}
+ {%block clt%}{%endblock%}

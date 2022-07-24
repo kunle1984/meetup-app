@@ -1,0 +1,70 @@
+<header>
+    <!-- header inner -->
+    <div class="header">
+       <div class="head_top">
+          <div class="container">
+             <div class="row">
+               <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                  <div class="top-box">
+                   <ul class="sociel_link">
+                    <li> <a href="#"><i class="fa fa-facebook-f"></i></a></li>
+                    <li> <a href="#"><i class="fa fa-twitter"></i></a></li>
+                    <li> <a href="#"><i class="fa fa-instagram"></i></a></li>
+                    <li> <a href="#"><i class="fa fa-linkedin"></i></a></li>
+                </ul>
+               </div>
+             </div>
+             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                  <div class="top-box">
+                     {% if request.user.is_authenticated%} 
+                     <p> Welcome! {{request.user.username}} | 
+
+                        <a href="{% url 'user-profile' request.user.id %}"> Edit Profile
+                     </p>
+                      {%endif%}
+                   
+               </div>
+             </div>
+          </div>
+       </div>
+    </div>
+    <div class="container">
+       <div class="row">
+          <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
+             <div class="full">
+                <div class="center-desk">
+                   <div class="logo"> <a href="index.html"><img src="images/logo.jpg" alt="logo"/></a> </div>
+                </div>
+             </div>
+          </div>
+          <div class="col-xl-7 col-lg-7 col-md-9 col-sm-9">
+             <div class="menu-area">
+                <div class="limit-box">
+                   <nav class="main-menu">
+                      <ul class="menu-area-main">
+                         <li > <a href="{%  url 'meetups'%}">Meetups</a> </li>
+                     
+                         <li> <a href="{%  url 'contact'%}">Contact</a> </li>
+                     {% if request.user.is_authenticated %}
+                       
+                         <li class="mean-last"> <a href="">Add Meetups</a> </li>
+                         <li class="mean-last"> <a href="">Add Location</a> </li>
+                         {%else%}
+                         <li class="mean-last"> <a href="{% url 'register'%}">signup</a> </li>
+                         {%endif%} 
+                      </ul>
+                   </nav>
+                </div>
+             </div>
+          </div>
+          <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
+            {% if request.user.is_authenticated %}
+             <li><a class="buy" href="{% url 'logout'%}">Logout</a></li>
+             {%else%}
+             <li><a class="buy" href="{% url 'login'%}">Login</a></li>
+             {%endif%} 
+          </div>
+       </div>
+    </div>
+    <!-- end header inner --> 
+ </header>

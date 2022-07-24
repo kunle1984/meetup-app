@@ -1,0 +1,105 @@
+{% extends 'meetups/main.html' %}
+
+{% block title %} Meetups{% endblock title%}
+
+{% block slider %} {% endblock%}
+{%block page_title%}
+</br>
+            <h2 class="fw-bold">My Meetups </h2>
+            <form action="" class="contact-form" method="GET" id="contact">
+              {%csrf_token%}
+              <div class="col-xl-12">
+                <div class="contact-form-wrapper"> 
+            <div class="row">
+              <div class="col-md-12">
+                <input type="text" name="q" placeholder="search" required />
+              </div>
+              
+            </div>
+            <hr>
+              <div class="col-12">
+                
+                <div class="col-12">
+                <div class="button text-center rounded-buttons">
+                  <button type="submit" class="btn primary-btn rounded-full">
+                   Search
+                  </button>
+                  <a class="btn primary-btn rounded-full" href="{% url 'user-meetups' request.user.id%}" >All</a>
+                </div>
+             
+              </div>
+            </div>
+          </form>
+          
+        </div>
+      </div>
+            <p>
+              These are diiferent meetups for different events. You can edit them or delete them here
+            </p>
+        {% endblock%}
+{% block content%}
+
+
+  <div class="container"> 
+     <div class="row">
+         
+        {% for meetup in meetups %}
+        <div class="col-md-4">
+          <div class="image">
+           <div class="card">
+            <div class="single-news">
+              
+              <img src="{{ meetup.image.url }}" class="card-img-top thumb" >
+              
+            </div>
+              <div class="card-body">
+                <div class="card-title">
+                  <div class="content-body">
+                    <h4 class="title">
+                  {{ meetup.title }}
+                
+                    </h4>
+                  </div>
+                </div>
+                <div class="card-sub-title">
+                  <span >Date:  {{ meetup.from_date }} - {{ meetup.to_date }}</span></div>
+                  <div class="card-text">
+                    Location: {{ meetup.location.name }}
+                   
+                  </div>
+                  <br>
+              
+                <a class="btn primary-btn rounded-full" target="_new" href="{%url 'meetup-update' meetup.id%}">Edit</a>
+                <a class="btn primary-btn rounded-full" target="_new" href="{%url 'meetup-delete' meetup.id%}">Delete</a>
+                <hr/>
+               
+                <span><a class="contact-content" target="_new" href="{%url 'add-speakers' meetup.slug%}">Add speakers</a></span> |
+                
+                <span> <a class="contact-content" target="_new" href="{%url 'participants' meetup.id%}">Participants </a></span>
+               
+ 
+              </div>
+
+           </div>
+          </div>
+        </div>
+        {% empty %}
+        <span> No data found</span>
+    {%endfor%}
+    
+       </div>
+    </div>
+
+      
+     </div>
+  
+
+
+  </div>
+</br>
+
+   {% endblock %}
+   
+
+
+    

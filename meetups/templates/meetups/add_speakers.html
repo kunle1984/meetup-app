@@ -1,0 +1,49 @@
+{% extends 'meetups/main.html' %}
+{% block title %} Add Speakers{% endblock title%}
+{% block slider %} {% endblock%}
+{%block page_title%}
+</br>
+<h2 >Add Speakers </h2>
+{%endblock%}
+{% block content%}
+<section id="contact" class="contact-section">
+    <div class="container">
+      <div class="row">
+        
+        
+        <div class="col-xl-12">
+          <div class="contact-form-wrapper">
+            <div class="row">
+              <div class="col-xl-10 col-lg-8 mx-auto">
+                
+              </div>
+            </div>
+            <form action="" class="contact-form" method="POST"  enctype="multipart/form-data">
+                {%csrf_token%}
+              <div class="row">
+                <div class="col-md-12">
+                 {{ form.as_p}}
+                </div>
+                
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-12">
+                  <div class="button text-center rounded-buttons">
+                    <button type="submit" class="btn primary-btn rounded-full">
+                   Add Speakers
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <br>
+{% endblock content%}
+{% block clt%}{% endblock%}
+
+

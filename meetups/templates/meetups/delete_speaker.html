@@ -1,0 +1,38 @@
+{% extends 'meetups/main.html' %}
+{% block title %} Delete Speaker{% endblock title%}
+{% block slider %} {% endblock%}
+{%  block page_title%}<h2>Delete Speaker</h2>{%endblock%}
+{% block content%}
+
+ <!-- Start Cta Area -->
+ <section id="call-action" class="call-action">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-xxl-6 col-xl-7 col-lg-8 col-md-9">
+          <div class="inner-content">
+            <form method="POST">
+                {% csrf_token %}
+            
+            <p>
+                Are You Sure You Want To Delete Speaker <strong >{{speaker}}</strong><br />
+               
+               
+             
+            </p>
+            <div class="d-block text-right card-footer">
+                <a  class="btn btn-primary" href="{%url 'user-speakers' request.user.id%}">back</a></h6>
+                <input  class="btn btn-primary" type="submit" value="Delete" />
+                </form
+                
+                </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Cta Area -->
+
+
+
+ {% endblock%}
+ {%block clt%}{%endblock%}

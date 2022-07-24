@@ -1,0 +1,101 @@
+{% extends 'meetups/main.html' %}
+{% block title %} Login{% endblock title%}
+{% block slider %} {% endblock%}
+{%block page_title%}
+</br>
+<h2 >Contact Us</h2>
+{%endblock%}
+{% block content%}
+
+   <!-- ========================= contact-section start ========================= -->
+   <section id="contact" class="contact-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-4">
+          <div class="contact-item-wrapper">
+            <div class="row">
+              <div class="col-12 col-md-6 col-xl-12">
+                <div class="contact-item">
+                  <div class="contact-icon">
+                    <i class="lni lni-phone"></i>
+                  </div>
+                  <div class="contact-content">
+                    <h4>Contact</h4>
+                    <p>+2347036872481</p>
+                    <p>kunlefes089@gmail.com</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-6 col-xl-12">
+                <div class="contact-item">
+                  <div class="contact-icon">
+                    <i class="lni lni-map-marker"></i>
+                  </div>
+                  <div class="contact-content">
+                    <h4>Address</h4>
+                    <p>Suite A1 Asher Plaza Arab road kubwa , Fct Abuja </p>
+                    <p>Nigeria</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-6 col-xl-12">
+                <div class="contact-item">
+                  <div class="contact-icon">
+                    <i class="lni lni-alarm-clock"></i>
+                  </div>
+                  <div class="contact-content">
+                    <h4>Schedule</h4>
+                    <p>24 Hours / 7 Days Open</p>
+                    <p>Office time: 10 AM - 5:30 PM</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-8">
+          <div class="contact-form-wrapper">
+            <div class="row">
+              <div class="col-xl-10 col-lg-8 mx-auto">
+                <div class="section-title text-center">
+                  <span> Get in Touch </span>
+                  
+                </div>
+              </div>
+            </div>
+            <form method="POST" action="" class="contact-form">
+              <div class="row">
+                <div class="col-md-12">
+               {%csrf_token%}
+               {{form.as_p}}
+                </div>
+                
+              <div class="row">
+                <div class="col-12">
+                  <div class="button text-center rounded-buttons">
+                    <button type="submit" class="btn primary-btn rounded-full">
+                      Send Message
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ========================= contact-section end ========================= -->
+
+  <!-- ========================= map-section end ========================= -->
+  <section class="map-section map-style-9">
+    <div class="map-container">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3938.9162255468127!2d7.3122345141057306!3d9.162029989415522!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x104dd9e1d317b3d9%3A0x1e47ac1c6500cb02!2sAsher%20Plaza%2C%20Kubwa!5e0!3m2!1sen!2sng!4v1658526605059!5m2!1sen!2sng" width="1200" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+     
+    </div>
+    </div>
+  </section>
+  <!-- ========================= map-section end ========================= -->
+
+    {% endblock %}
+   
