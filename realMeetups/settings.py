@@ -80,8 +80,13 @@ WSGI_APPLICATION = 'realMeetups.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+         #'ENGINE': 'django.db.backends.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': '5LiuHuqMCPxKsXQZQSKO',
+        'HOST': 'containers-us-west-17.railway.app',
+        'PORT': '7405',
     }
 }
 

@@ -184,15 +184,16 @@ def add_speakers(request, meetup_slug):
 @login_required(login_url='login')
 def user_speakers(request, pk):
     q=request.GET.get('q') if request.GET.get('q') !=None else ''
+   
     user_speakers=Speaker.objects.order_by('-id')
-    user_speakers=Speaker.objects.filter(
-        Q(user=pk)&
+    user_speakers=Speaker.objects.filter(user=pk)
+    speakers=user_speakers.filter(
         Q(name__icontains=q)|
         Q(meetup_name__icontains=q)
         
         ) 
     count=user_speakers.count()
-    return render(request, 'meetups/user_speakers.html', {'speakers':user_speakers, 'count':count} )
+    return render(request, 'meetups/user_speakers.html', {'speakers':speakers, 'count':count} )
 
 #speakers update
 class SpeakerUpdate(LoginRequiredMixin, UpdateView):
