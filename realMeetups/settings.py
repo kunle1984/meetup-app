@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-n=+&u*xw(3$6-#ep7g*%@+c55il7o-w4ufzyl10q+#bbwj#i2_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['kunlefes-meetups.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -119,11 +119,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 #cors origin
-CORS_ALLOWED_ORIGINS = [
-    
-    "http://localhost:3000",
-  
-]
+
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
