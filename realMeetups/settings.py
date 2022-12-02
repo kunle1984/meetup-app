@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-n=+&u*xw(3$6-#ep7g*%@+c55il7o-w4ufzyl10q+#bbwj#i2_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['kunlefes-meetups.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
@@ -173,10 +173,10 @@ RECIPIENT_ADDRESS=recipient_address
 
 
 CORS_ALLOWED_ORIGINS = [
-        'https://k-ecommerce-production.up.railway.app',
+        'https://k-meetups-production.up.railway.app',
         "http://localhost:8000"
         
     ]
 
-CSRF_TRUSTED_ORIGINS = ['https://k-ecommerce-production.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['https://k-meetups-production.up.railway.app']
 CORS_ALLOW_CREDENTIALS=True
