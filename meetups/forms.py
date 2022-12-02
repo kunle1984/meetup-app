@@ -33,7 +33,8 @@ class MyUserRegistrationForm(UserCreationForm):
             
             'name':TextInput(
                 attrs={
-                   "placeholder": "Enter name"
+                   "placeholder": "Enter name",
+                   "class":"form-control"
                 }
             ),
             'email':TextInput(

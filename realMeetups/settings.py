@@ -25,9 +25,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-n=+&u*xw(3$6-#ep7g*%@+c55il7o-w4ufzyl10q+#bbwj#i2_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['kunle-meetups.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['kunlefes-meetups.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
@@ -40,13 +40,18 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'meetups', 
-    'storages'
+    'storages',
+    'rest_framework',
+    "corsheaders",
+    'rest_framework.authtoken'
 ]
 AUTH_USER_MODEL = 'meetups.myUser'
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
+    'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
+  
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -55,7 +60,6 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'realMeetups.urls'
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -78,7 +82,7 @@ WSGI_APPLICATION = 'realMeetups.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {
+"""DATABASES = {
     'default': {
          #'ENGINE': 'django.db.backends.sqlite3',
         'ENGINE': 'django.db.backends.postgresql',
@@ -88,8 +92,13 @@ DATABASES = {
         'HOST': 'containers-us-west-17.railway.app',
         'PORT': '7405',
     }
+}"""
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -109,7 +118,12 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
+#cors origin
+CORS_ALLOWED_ORIGINS = [
+    
+    "http://localhost:3000",
+  
+]
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
@@ -140,11 +154,7 @@ MEDIA_URL='/files/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-AWS_QUERYSTRING_AUTH=False
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-AWS_ACCESS_KEY_ID='AKIATRQH4QNYEK2554YU'
-AWS_SECRET_ACCESS_KEY='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'
-AWS_STORAGE_BUCKET_NAME='kunlemeetups'
+
 
 email_host= 'smtp.risinghopegirlseducation.com'
 email_port =465
@@ -165,3 +175,12 @@ EMAIL_HOST_PASSWORD =email_host_password
 # To email: contact form
 RECIPIENT_ADDRESS=recipient_address
 
+
+CORS_ALLOWED_ORIGINS = [
+        'https://k-ecommerce-production.up.railway.app',
+        "http://localhost:8000"
+        
+    ]
+
+CSRF_TRUSTED_ORIGINS = ['https://k-ecommerce-production.up.railway.app']
+CORS_ALLOW_CREDENTIALS=True

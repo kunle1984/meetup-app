@@ -24,7 +24,7 @@ def loginPage(request):
     page='Login'
     if request.user.is_authenticated:
         return redirect('meetups')
-    #when submit botti=on is pressed
+    #when submit botti=on is pressed 
     if request.method=='POST':  
         email = request.POST.get('email')
         email.lower()
@@ -184,7 +184,7 @@ def add_speakers(request, meetup_slug):
 @login_required(login_url='login')
 def user_speakers(request, pk):
     q=request.GET.get('q') if request.GET.get('q') !=None else ''
-   
+    
     user_speakers=Speaker.objects.order_by('-id')
     user_speakers=Speaker.objects.filter(user=pk)
     speakers=user_speakers.filter(

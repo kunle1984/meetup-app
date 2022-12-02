@@ -18,9 +18,13 @@ from django.urls import path
 from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
+from rest_framework.authtoken.views import obtain_auth_token
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('meetups.urls')),
+    path('api/', include('meetups.api.urls')),
+    path('auth/', obtain_auth_token)
+    
     #path('api/', include('meetups.api.urls'))
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
