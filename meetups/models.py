@@ -11,7 +11,7 @@ class myUser(AbstractUser):
     image = models.ImageField(null=True)
     mobile_number = models.CharField(max_length=10, blank=True, null=True)
     birth_date = models.DateField(null=True, blank=True)
-    #USERNAME_FIELD = 'email'
+    USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
 
 
