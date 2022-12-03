@@ -168,6 +168,14 @@ EMAIL_USE_SSL = email_use_ssl
 EMAIL_HOST_USER =email_host_user
 EMAIL_HOST_PASSWORD =email_host_password
 
+
+#S3 bucket
+AWS_QUERYSTRING_AUTH=False
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+AWS_ACCESS_KEY_ID='AKIATRQH4QNYEK2554YU'
+AWS_SECRET_ACCESS_KEY='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'
+AWS_STORAGE_BUCKET_NAME='kunlemeetups'
+
 # To email: contact form
 RECIPIENT_ADDRESS=recipient_address
 
