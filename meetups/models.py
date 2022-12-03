@@ -45,7 +45,7 @@ class Speaker(models.Model):
 class Meetup(models.Model):
       user=models.ForeignKey(myUser,  on_delete=models.CASCADE, null=True, blank=True)
       organizer_email=models.EmailField(max_length=254, null=True)
-      title=models.CharField(max_length=200)
+      title=models.CharField(max_length=500)
       slug=models.SlugField(unique=True)
       description=models.TextField()
       image=models.ImageField(upload_to='images')

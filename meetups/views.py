@@ -2,6 +2,7 @@ from dataclasses import field
 from itertools import count
 from django.shortcuts import render
 from urllib import request
+from string import punctuation
 from django.views.generic import FormView, TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
@@ -224,7 +225,9 @@ class MeetupsCreate(LoginRequiredMixin,CreateView):
     template_name='meetups/meetup_form.html'
     def form_valid(self, form):
         form.instance.user=self.request.user
-        form.instance.slug=form.instance.title.replace(' ', '-')
+        for i in punctuation:
+            title=form.instance.title.replace(i, '')
+        form.instance.slug=title.replace(' ', '-')
         return super(MeetupsCreate, self).form_valid(form)
 
 #Delete Meetups
