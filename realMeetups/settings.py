@@ -12,8 +12,8 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import os
-
-
+import dj_database_url
+import environs
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -82,7 +82,7 @@ WSGI_APPLICATION = 'realMeetups.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {
+"""DATABASES = {
     'default': {
          #'ENGINE': 'django.db.backends.sqlite3',
         'ENGINE': 'django.db.backends.postgresql',
@@ -93,12 +93,23 @@ DATABASES = {
         'PORT': '7405',
     }
 }
-"""DATABASES = {
+DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }"""
+
+env=environs.Env()
+environs.Env.read_env()
+
+DATABASES={
+#'default': dj_database_url.parse('postgres://meetup_j0wd_user:uhzpWQPrSlJ6qhmQ8iyUZMUcV68Kwx8C@dpg-cfvobtt269v0ptmr9tg0-a.oregon-postgres.render.com/meetup_j0wd')
+
+
+'default':dj_database_url.parse(env('DATABASE_URL'))
+
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators

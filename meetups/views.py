@@ -226,8 +226,8 @@ class MeetupsCreate(LoginRequiredMixin,CreateView):
     def form_valid(self, form):
         form.instance.user=self.request.user
         for i in punctuation:
-            title=form.instance.title.replace(i, '')
-        form.instance.slug=title.replace(' ', '-')
+            form.instance.title=form.instance.title.replace(i, ' ')
+        form.instance.slug=form.instance.title.replace(' ', '-')
         return super(MeetupsCreate, self).form_valid(form)
 
 #Delete Meetups
