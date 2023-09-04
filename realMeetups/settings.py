@@ -103,14 +103,31 @@ DATABASES = {
 env=environs.Env()
 environs.Env.read_env()
 
-DATABASES={
-#'default': dj_database_url.parse('postgres://meetup_j0wd_user:uhzpWQPrSlJ6qhmQ8iyUZMUcV68Kwx8C@dpg-cfvobtt269v0ptmr9tg0-a.oregon-postgres.render.com/meetup_j0wd')
+# DATABASES={
+# #'default': dj_database_url.parse('postgres://meetup_j0wd_user:uhzpWQPrSlJ6qhmQ8iyUZMUcV68Kwx8C@dpg-cfvobtt269v0ptmr9tg0-a.oregon-postgres.render.com/meetup_j0wd')
 
 
-'default':dj_database_url.parse(env('DATABASE_URL'))
+# 'default':dj_database_url.parse(env('DATABASE_URL'))
 
+# }
+
+# DATABASES = {
+#     'default': {
+#          #'ENGINE': 'django.db.backends.sqlite3',
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'HOST': os.environ.get('DB_HOST'),
+#         'NAME': os.environ.get('DB_NAME'),
+#         'USER': os.environ.get('DB_USER'),
+#         'PASSWORD': os.environ.get('DB_PASS'),
+    
+#     }
+# }
+
+
+DATABASES = {
+    'default':dj_database_url.parse(env('DATABASE_URL'))
+ 
 }
-
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 

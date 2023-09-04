@@ -155,7 +155,8 @@ class UseMeetupForm(forms.ModelForm):
             'description':Textarea(
                 
                 attrs={
-                    "placeholder": "Enter meetup description"
+                    "placeholder": "Enter meetup description",
+                    'class':'form-control'
                 }
             ), 
             'title':TextInput(
