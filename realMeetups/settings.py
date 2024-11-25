@@ -103,13 +103,7 @@ DATABASES = {
 env=environs.Env()
 environs.Env.read_env()
 
-# DATABASES={
-# #'default': dj_database_url.parse('postgres://meetup_j0wd_user:uhzpWQPrSlJ6qhmQ8iyUZMUcV68Kwx8C@dpg-cfvobtt269v0ptmr9tg0-a.oregon-postgres.render.com/meetup_j0wd')
 
-
-# 'default':dj_database_url.parse(env('DATABASE_URL'))
-
-# }
 
 DATABASES = {
     'default':dj_database_url.parse(env('DATABASE_URL'))
@@ -167,21 +161,15 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 
-email_host= 'smtp.risinghopegirlseducation.com'
-email_port =465
-email_use_ssl = True
-email_host_user ='admin@risinghopegirlseducation.com'
-email_host_password = 'myadmin_1234'
-
-# To email: contact form
-recipient_address='kunlefes089@gmail.com'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST =  email_host
-EMAIL_PORT =email_port
-EMAIL_USE_SSL = email_use_ssl
-EMAIL_HOST_USER =email_host_user
-EMAIL_HOST_PASSWORD =email_host_password
+EMAIL_HOST =  os.environ.get('EMAIL_HOST')
+EMAIL_PORT =os.environ.get('EMAIL_PORT')
+EMAIL_USE_SSL = os.environ.get('EMAIL_USE_SSL')
+EMAIL_HOST_USER =os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD =os.environ.get('EMAIL_HOST_PASSWORD')
+# To email: contact form
+recipient_address='kunlefes089@gmail.com'
 
 
 #S3 bucket
