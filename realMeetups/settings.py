@@ -184,10 +184,10 @@ RECIPIENT_ADDRESS=recipient_address
 
 
 CORS_ALLOWED_ORIGINS = [
-        'https://k-meetups-production.up.railway.app',
+        'https://k-meetup-web.onrender.com',
         "http://localhost:8000"
         
     ]
 
-CSRF_TRUSTED_ORIGINS = ['https://k-meetups-production.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['https://k-meetup-web.onrender.com']
 CORS_ALLOW_CREDENTIALS=True
